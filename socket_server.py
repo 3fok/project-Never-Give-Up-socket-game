@@ -4,6 +4,7 @@ from _thread import *
 from tkinter.constants import NONE
 import dtb
 import time
+import random
 
 dtb.connect_dtb()
 ServerSocket = None
@@ -27,7 +28,8 @@ def data_for_play(question_num, data_received, last_answer):
 
 def threaded_client(connection):
     user_name = ''
-    question_num = 1
+    question_num_play = 1
+    maxquest_play = 4
     last_answer = ''
     maxquest = dtb.number_of_quest()
     while True:
@@ -55,7 +57,9 @@ def threaded_client(connection):
                         x='login 1'
                         connection.send(x.encode())
                         time.sleep(0.5)
-                        (data_sent, last_answer) = data_for_play(question_num, '*', last_answer)
+                        question_num_play = 1
+                        question_num = random.sample(range(1, maxquest+1), maxquest_play)
+                        (data_sent, last_answer) = data_for_play(question_num[question_num_play-1], '*', last_answer)
                         connection.send(data_sent.encode())
                     else:
                         x='login 0'
@@ -70,14 +74,14 @@ def threaded_client(connection):
                         x='login 0'
                         connection.send(x.encode())
             elif data[0] == 'answer':
-                if question_num == maxquest:
+                if question_num_play == maxquest_play:
                     if data[1] == last_answer: check_answer = 1
                     else: check_answer = 0
                     data_sent = 'lastques ' + str(check_answer)
                     connection.send(data_sent.encode()) 
                 else:
-                    question_num += 1
-                    (data_sent, last_answer) = data_for_play(question_num, data[1], last_answer)
+                    question_num_play +=1
+                    (data_sent, last_answer) = data_for_play(question_num[question_num_play-1], data[1], last_answer)
                     connection.send(data_sent.encode())
             elif data[0] == 'endgame':
                 dtb.add_rank(user_name, data[1])
@@ -85,12 +89,14 @@ def threaded_client(connection):
                 data = 'endgame ' + data
                 connection.send(data.encode())
             elif data[0] == 'playagain':
-                question_num = 1
+                question_num_play = 1
+                question_num = random.sample(range(1, maxquest+1), maxquest_play)
                 last_answer = ''
-                (data_sent, last_answer) = data_for_play(question_num, '*', last_answer)
+                (data_sent, last_answer) = data_for_play(question_num[question_num_play-1], '*', last_answer)
                 connection.send(data_sent.encode())
             elif data[0] == 'exit':
-                question_num = 1
+                question_num_play = 1
+                question_num = random.sample(range(1, maxquest+1), maxquest_play)
     connection.close()            
 
 def start_server():

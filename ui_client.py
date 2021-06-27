@@ -70,7 +70,7 @@ frame_start_ranking.propagate(0)
 frame_start_ranking.pack()
 frame_start_ranking.pack_forget()
 
-pt_chart = PhotoImage(file="icon//topuser.gif")
+pt_chart = PhotoImage(file="icon//topusers.gif")
 bt_chart = tk.Button(frame_start, image=pt_chart, relief='flat',background='#000000')
 bt_chart.pack(side = TOP)
 #endregion
