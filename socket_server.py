@@ -54,7 +54,7 @@ def threaded_client(connection):
                         user_name = data[2]
                         x='login 1'
                         connection.send(x.encode())
-                        time.sleep(1)
+                        time.sleep(0.5)
                         (data_sent, last_answer) = data_for_play(question_num, '*', last_answer)
                         connection.send(data_sent.encode())
                     else:
@@ -74,7 +74,7 @@ def threaded_client(connection):
                     if data[1] == last_answer: check_answer = 1
                     else: check_answer = 0
                     data_sent = 'lastques ' + str(check_answer)
-                    connection.send(data_sent.encode())
+                    connection.send(data_sent.encode()) 
                 else:
                     question_num += 1
                     (data_sent, last_answer) = data_for_play(question_num, data[1], last_answer)

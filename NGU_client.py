@@ -131,7 +131,6 @@ def bt_play_again_click():
 ui_clt.bt_exit.config(command = lambda : bt_exit_click())
 def bt_exit_click():
     sk_clt.sent_msg('exit')
-    #sk_clt.ClientSocket.close()
     ui_clt.frame_end_game.pack_forget()
     ui_clt.frame_start.pack()
 
