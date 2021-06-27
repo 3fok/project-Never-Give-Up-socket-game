@@ -39,21 +39,21 @@ def view_quest(quest_num): #noi dung cau hoi
     global cursor
     cursor.execute('select * from ques_list')
     for row in cursor:
-        if row[0] == quest_num:
+        if int(row[0]) == quest_num:
             return row[1]     
 
 def view_ans(quest_num): #noi dung cau tra loi
     global cursor
     cursor.execute('select * from ques_list')
     for row in cursor:
-        if row[0] == quest_num:
+        if int(row[0]) == quest_num:
             return row[2]
 
 def view_hint(quest_num): #noi dung hint
     global cursor
     cursor.execute('select * from ques_list')
     for row in cursor:
-        if row[0] == quest_num:
+        if int(row[0]) == quest_num:
             return row[3]
 
 def view_user_rank(acc):#xem 3 rank quanh user
