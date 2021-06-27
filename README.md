@@ -16,4 +16,11 @@
 
 -------------------------------------------------------------------------
 
+### Nguồn tham khảo:
+
+- [Socket Server with Multiple Clients](https://codezup.com/socket-server-with-multiple-clients-model-multithreading-python/)
+- [Python - GUI Programming (Tkinter)](https://www.tutorialspoint.com/python/python_gui_programming.htm)
+- [SQLite - Python](https://www.tutorialspoint.com/sqlite/sqlite_python.htm)
+
+
 #Good luck!!
