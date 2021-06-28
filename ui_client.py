@@ -425,6 +425,8 @@ def show_hint():
         score = score + 313
         messagebox.showinfo("(ﾉ´･ω･)ﾉ ﾐ ┻━┻", 'Làm gì còn đủ điểm đâu mà đòi coi gợi ý :)\nKiếm đủ 313 điểm đi rồi quay lại đây =))')
     else:
+        label_score.config(text=score)
+        label_score.pack()
         messagebox.showinfo("(ﾉ´･ω･)ﾉ ﾐ ┻━┻", hint.replace('*',' '))
 
 def get_answerword():
