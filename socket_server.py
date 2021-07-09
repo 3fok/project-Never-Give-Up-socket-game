@@ -26,10 +26,12 @@ def data_for_play(question_num, data_received, last_answer):
     data4sent = 'play ' + str(add_score) + " " + str(question_num) + " " + str(question) + " " + str(hint)
     return data4sent, last_answer
 
+maxquest_play = 4
 def threaded_client(connection):
+    global maxquest_play
     user_name = ''
     question_num_play = 1
-    maxquest_play = 4
+    #maxquest_play = 4
     last_answer = ''
     maxquest = dtb.number_of_quest()
     while True:

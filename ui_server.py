@@ -54,6 +54,9 @@ frame_button = tk.Frame(window, width = 100, height= 400, bg= '#000000')
 btnStart = tk.Button(frame_button, text="Start", font=('Roboto Mono', 12, 'bold'), bg= '#000000', fg='#ffffff', width = 8, height= 1)
 btnStart.pack(side=TOP)
 
+btnMaxquest = tk.Button(frame_button, text="Max Quest", font=('Roboto Mono', 10, 'bold'), bg= '#000000', fg='#ffffff', width = 10, height= 1)
+btnMaxquest.pack(side=TOP)
+
 btnShowDtb = tk.Button(frame_button, text="Show dtb", font=('Roboto Mono', 12, 'bold'), bg= '#000000', fg='#ffffff', width = 8, height= 1)
 btnShowDtb.pack(side=TOP)
 
@@ -151,5 +154,6 @@ frame_button.place(x=400,y=0)
 def disable_button():
     global btnStart
     btnStart.config(state=tk.DISABLED)
+    btnMaxquest.config(state=tk.DISABLED)
 
 #window.mainloop()
